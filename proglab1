@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <windows.h>
+
+int main() {
+
+SetConsoleCP(1251);
+SetConsoleOutputCP(1251);
+  printf("Виконав Філоненко Іван\n");
+    int t1, t2, t3;
+    printf("Введіть час споживання торту кожним гостем:\n");
+    printf("Гість 1:\n");
+    scanf("%d", &t1);
+     printf("Гість 2:\n");
+    scanf("%d", &t2);
+     printf("Гість 3:\n");
+    scanf("%d", &t3); // Зчитуємо три числа з вхідного рядка і зберігаємо їх у змінних t1, t2, t3
+
+    double per_hour = 1.0 / t1 + 1.0 / t2 + 1.0 / t3; // Обчислюємо скільки пирога гості можуть з'їсти за 1 годину
+    double time_to_eat_cake = 1.0 / per_hour; // Обчислюємо час, за який гості разом з'їдять пиріг
+
+    printf("%.2lf\n", time_to_eat_cake); // Виводимо результат з двома знаками після коми
+
+    return 0;
+}
+
