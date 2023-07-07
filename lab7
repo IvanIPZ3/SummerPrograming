@@ -1,0 +1,39 @@
+
+#include <windows.h>
+#include <stdio.h>
+#include <math.h>
+
+int countIntersectionPoints(int x1, int y1, int r1, int x2, int y2, int r2) {
+    double distance = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+
+    // Перевіряємо умови для визначення кількості точок перетину
+    if (distance == 0 && r1 == r2) {
+        return -1; // Безкінечно багато точок перетину
+    } else if (distance > r1 + r2 || distance < fabs(r1 - r2)) {
+        return 0; // Немає точок перетину
+    } else if (distance == r1 + r2 || distance == fabs(r1 - r2)) {
+        return 1; // Одна точка перетину
+    } else {
+        return 2; // Дві точки перетину
+    }
+}
+
+int main() {
+
+     SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+     printf("Виконав Філоненко Іван\n");
+
+    int x1, y1, r1, x2, y2, r2;
+    printf("Введіть координати центрів та радіуси двох колів (x1, y1, r1, x2, y2, r2): ");
+    scanf("%d %d %d %d %d %d", &x1, &y1, &r1, &x2, &y2, &r2);
+
+    int result = countIntersectionPoints(x1, y1, r1, x2, y2, r2);
+
+    printf("Кількість точок перетину: %d\n", result);
+
+    return 0;
+}
+
+
