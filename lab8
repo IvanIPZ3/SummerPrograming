@@ -19,7 +19,7 @@ int countAnagrams(char word[]) {
     // Обчислення кількості анаграм за формулою n!/(n1! * n2! * ... * nk!), де n1, n2, ..., nk - кількість повторюючихся букв
     int freq[26] = {0}; // Масив для підрахунку частоти кожної букви
     for (int i = 0; i < n; i++) {
-        freq[word[i] - 'A']++;
+        freq[toupper(word[i]) - 'A']++;
     }
 
     int anagramCount = factorial(n);
@@ -33,7 +33,7 @@ int countAnagrams(char word[]) {
 }
 
 int main() {
-      SetConsoleCP(1251);
+       SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
      printf("Виконав Філоненко Іван\n");
