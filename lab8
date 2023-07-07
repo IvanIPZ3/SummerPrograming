@@ -1,0 +1,62 @@
+
+#include <windows.h>
+#include <stdio.h>
+#include <string.h>
+
+// Функція для обчислення факторіала числа
+int factorial(int n) {
+    int fact = 1;
+    for (int i = 1; i <= n; i++) {
+        fact *= i;
+    }
+    return fact;
+}
+
+// Функція для обчислення кількості анаграм для заданого слова
+int countAnagrams(char word[]) {
+    int n = strlen(word); // Кількість букв у слові
+
+    // Обчислення кількості анаграм за формулою n!/(n1! * n2! * ... * nk!), де n1, n2, ..., nk - кількість повторюючихся букв
+    int freq[26] = {0}; // Масив для підрахунку частоти кожної букви
+    for (int i = 0; i < n; i++) {
+        freq[word[i] - 'A']++;
+    }
+
+    int anagramCount = factorial(n);
+    for (int i = 0; i < 26; i++) {
+        if (freq[i] > 1) {
+            anagramCount /= factorial(freq[i]);
+        }
+    }
+
+    return anagramCount;
+}
+
+int main() {
+      SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+     printf("Виконав Філоненко Іван\n");
+
+    char word[15];
+    printf("Введіть слово: ");
+    scanf("%s", word);
+
+    // Перевірка на коректність довжини слова
+    if (strlen(word) > 14) {
+        printf("Некоректна довжина слова\n");
+        return 1;
+    }
+
+    int result = countAnagrams(word);
+
+    printf("Кількість анаграм: %d\n", result);
+
+    return 0;
+}
+
+
+
+
+
+
