@@ -1,39 +1,26 @@
-
-#include <windows.h>
 #include <stdio.h>
-
-int divide(int n) {
-    int count = 0; // Лічильник кількості рівних дільників
-
-    // Перевіряємо кожне число від 1 до n/2
-    for (int i = 1; i <= n / 2; i++) {
-        if (n % i == 0) {
-            count++; // Збільшуємо лічильник, якщо число i є дільником n
-        }
-    }
-
-    count++; // Додаємо саме число n, оскільки воно також є дільником самого себе
-
-    return count;
-}
+#include <windows.h>
 
 int main() {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    int n;
-     printf("Виконав Філоненко Іван");
-    printf("Введіть натуральне число n (1 < n < 150): ");
-    scanf("%d", &n);
 
-    // Перевірка на коректність значення числа n
-    if (n <= 1 || n >= 150) {
-        printf("Некоректне значення числа n\n");
-        return 1;
+    printf("Виконав Філоненко Іван\n");
+
+    int n, count = 0;
+
+    printf("Enter the n number: ");
+    scanf("%u", &n); // Зчитуємо введене число n
+
+    for (int i = 1; i <= n; i++) {
+        if (n % i == n / i) { // Перевіряємо, чи i є рівним дільником числа n
+            count++; // Збільшуємо лічильник рівних дільників
+        }
     }
 
-    int result = divide(n);
-
-    printf("Кількість рівних дільників числа %d: %d\n", n, result);
+    printf("Кількість рівних дільників числа n: %u\n", count); // Виводимо результат
 
     return 0;
 }
+
+
