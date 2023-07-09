@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+#include <windows.h>
+// Функція для обчислення мінімальної кількості кроків для переходу від x до y
+long long min_steps(long long x, long long y) {
+    long long dist = y - x;  // Обчислюємо дистанцію між x та y
+    long long k = sqrt(dist);  // Обчислюємо квадратний корінь дистанції
+    if (dist == k * k) {  // Якщо дистанція є квадратом квадратного кореня
+        return 2 * k - 1;  // Повертаємо результат для цього випадку
+    }
+    else if (dist <= k * k + k) {  // Якщо дистанція є між k^2 та k^2 + k
+        return 2 * k;  // Повертаємо результат для цього випадку
+    }
+    else {  // Для всіх інших випадків
+        return 2 * k + 1;  // Повертаємо результат
+    }
+}
+
+// Головна функція
+int main() {
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    long long x, y;
+    printf("Введіть x: ");
+    scanf("%lld", &x);
+    printf("Введіть y: ");
+    scanf("%lld", &y);
+    printf("Мінімальна кількість кроків: %lld\n", min_steps(x, y));  // Виводимо мінімальну кількість кроків, викликаючи функцію min_steps
+    return 0;
+}
