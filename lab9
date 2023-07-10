@@ -20,6 +20,7 @@ long long min_steps(long long x, long long y) {
 int main() {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
+    printf("Виконав Філоненко Іван\n");
     long long x, y;
     printf("Введіть x: ");
     scanf("%lld", &x);
